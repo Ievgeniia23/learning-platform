@@ -1,6 +1,15 @@
 .layoutContainer {
-    background-color: rgb(217, 170, 107);
-    min-height: 70vh;
-    width: 500px;
-
+  background-color: rgb(205, 180, 146);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
+
+.main {
+  flex: 1;
+  width: 100%;
+}
+

@@ -6,15 +6,15 @@ import css from './LessonsList.module.css';
 
 const LessonsList = () => {
   return (
-    <div>
-      <h1>Lessons</h1>
-      <ul>
-        {lessons.map(lessons => (
-          <li key={lessons.id}>
-            <Link to={`/lesson/${lessons.id}`}>{lessons.title}</Link>
-          </li>
-        ))}
-      </ul>
+    <div className={css.list}>
+      <h1>JavaScript Lessons</h1>
+
+      {lessons.map(lesson => (
+        <Link key={lesson.id} to={`/lesson/${lessons.id}`} className={css.card}>
+          <h3>{lessons.title}</h3>
+          <p>Open lesson</p>
+        </Link>
+      ))}
     </div>
   );
 };
