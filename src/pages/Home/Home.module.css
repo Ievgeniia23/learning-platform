@@ -1,1 +1,5 @@
-
+.homeWrap {
+  max-width: 700;
+  margin: '0 auto';
+  padding: 20px;
+}

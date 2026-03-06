@@ -18,3 +18,18 @@
 
   font-weight: 500;
 }
+
+.navBtn {
+  padding: 8px 16px;
+  background-color: #f5f0e6;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  margin: 0 5px;
+  transition: background 0.2s;
+}
+
+.navBtn:hover {
+  background-color: #e0d5c3;
+}

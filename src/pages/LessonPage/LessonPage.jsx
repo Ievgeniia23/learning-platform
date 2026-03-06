@@ -7,8 +7,8 @@ import css from './LessonPage.module.css';
 const LessonPage = () => {
   const { id } = useParams();
 
-  const lesson = lessons.find((lesson) => lesson.id === id);
-  const currentIndex = lessons.findIndex((lesson) => lesson.id === id);
+  const lesson = lessons.find(lesson => lesson.id === id);
+  const currentIndex = lessons.findIndex(lesson => lesson.id === id);
   const totalLessons = lessons.length;
 
   const prevLesson = lessons[currentIndex - 1];
@@ -19,7 +19,7 @@ const LessonPage = () => {
   return (
     <div className={css.lesson}>
       <h1>{lesson.title}</h1>
-<Link to="/lessons"> ⬅️ Back to lessons</Link>
+      <Link to="/lessons" className={css.navBtn}> ⬅️ Back to lessons</Link>
 
       <p>
         Lesson {currentIndex + 1} of {totalLessons}
@@ -33,9 +33,17 @@ const LessonPage = () => {
       </p>
 
       <div className={css.navigation}>
-        {prevLesson && <Link to={`/lesson/${prevLesson.id}`}>Previous</Link>}
+        {prevLesson && (
+          <Link to={`/lesson/${prevLesson.id}`} className={css.navBtn}>
+            ⬅️ Previous
+          </Link>
+        )}
 
-        {nextLesson && <Link to={`/lesson/${nextLesson.id}`}>Next</Link>}
+        {nextLesson && (
+          <Link to={`/lesson/${nextLesson.id}`} className={css.navBtn}>
+            Next ➡️
+          </Link>
+        )}
       </div>
     </div>
   );
