@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import { lessons } from '../../data/lessons.js';
 
 import css from './LessonsList.module.css';
@@ -11,9 +10,11 @@ const LessonsList = () => {
 
       {lessons.map((lesson, index) => (
         <Link key={lesson.id} to={`/lesson/${lesson.id}`} className={css.card}>
-          <h3>{index + 1}.{lesson.title}</h3>
+          <h3>
+            {index + 1}. {lesson.title}
+          </h3>
           <h6>{lesson.description}</h6>
-          <p>Open lesson</p>
+          <span className={css.openButton}>Open lesson</span>
         </Link>
       ))}
     </div>
