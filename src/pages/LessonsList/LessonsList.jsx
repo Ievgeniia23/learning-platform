@@ -9,9 +9,10 @@ const LessonsList = () => {
     <div className={css.list}>
       <h1>JavaScript Lessons</h1>
 
-      {lessons.map(lesson => (
-        <Link key={lesson.id} to={`/lesson/${lessons.id}`} className={css.card}>
-          <h3>{lessons.title}</h3>
+      {lessons.map((lesson, index) => (
+        <Link key={lesson.id} to={`/lesson/${lesson.id}`} className={css.card}>
+          <h3>{index + 1}.{lesson.title}</h3>
+          <h6>{lesson.description}</h6>
           <p>Open lesson</p>
         </Link>
       ))}
