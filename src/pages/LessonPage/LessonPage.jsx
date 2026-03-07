@@ -11,6 +11,9 @@ const LessonPage = () => {
   const currentIndex = lessons.findIndex(lesson => lesson.id === id);
   const totalLessons = lessons.length;
 
+  const progress = ((currentIndex + 1) / totalLessons) * 100;
+
+
   const prevLesson = lessons[currentIndex - 1];
   const nextLesson = lessons[currentIndex + 1];
 
@@ -24,6 +27,10 @@ const LessonPage = () => {
       <p>
         Lesson {currentIndex + 1} of {totalLessons}
       </p>
+      <div className={css.progressBar}>
+        <div className={progress} style={{ width: `${progress}%` }}></div>
+
+      </div>
 
       {lesson.content.map((p, index) => (
         <p key={index}>{p}</p>
@@ -50,3 +57,17 @@ const LessonPage = () => {
 };
 
 export default LessonPage;
+
+
+const markCompleted = () => {
+  const completed = JSON.parse(localStorage.getItem("completedLessons")) || [];
+
+  if (!completed.includes(id)) {
+    completed.push(id);
+  }
+  localStorage.setItem("completedLessons", JSON.stringify(completed));
+};
+
+<button onClick={markCompleted}>
+  Mark as completed
+</button>;
