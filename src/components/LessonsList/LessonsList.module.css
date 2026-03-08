@@ -5,6 +5,12 @@
   margin: 0 auto;
 }
 
+.titleWrapp {
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .card {
   display: block;
   padding: 20px;
@@ -19,6 +25,7 @@
   transform: translateY(-4px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.12);
 }
+
 
 .card h3 {
   margin: 0 0 6px 0;
@@ -47,4 +54,23 @@
 
 .openButton:hover {
   background-color: #535bf2;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.check {
+  background: #4caf50;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
