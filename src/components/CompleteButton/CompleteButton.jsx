@@ -24,8 +24,17 @@ const CompleteButton = ({ lessonId }) => {
   };
 
   return (
-    <button onClick={toggleCompleted} className={css.completeBtn}>
-      {isCompleted ? '✔ Completed (click to undo)' : 'Mark as completed'}
+    <button
+      onClick={toggleCompleted}
+      className={`${css.completeBtn} ${isCompleted ? css.completed : ''}`}
+    >
+      {isCompleted ? (
+        <>
+          ✔ Completed <span className={css.undoText}>(click to undo)</span>
+        </>
+      ) : (
+        'Mark as completed'
+      )}
     </button>
   );
 };

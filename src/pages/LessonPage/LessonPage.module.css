@@ -19,33 +19,5 @@
   font-weight: 500;
 }
 
-.navBtn,
-.completeBtn {
-  padding: 8px 16px;
-  background-color: #f8f7f6;
-  border-radius: 6px;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  margin: 10px 5px;
-  margin-bottom: 20px;
-  transition: background 0.2s;
-  font-size: 16px;
-  }
 
-.navBtn:hover,
-.completeBtn:hover {
-  background-color: #e0d5c3;
-}
 
-.completeBtn {
-  border: none;
-  margin-bottom: 40px;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-}
-
-.completeBtn:disabled {
-  background: #10b981;
-  cursor: default;
-}
