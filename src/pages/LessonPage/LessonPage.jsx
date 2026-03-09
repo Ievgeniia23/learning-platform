@@ -1,55 +1,57 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
 
-import { lessons } from '../../data/lessons.js';
+import ProgressBar from '../../components/ProgressBar/ProgressBar.jsx';
+import { lessons } from '../../data/lessons';
 import css from './LessonPage.module.css';
 
 const LessonPage = () => {
   const { id } = useParams();
 
-  // const lesson = lessons.find(lesson => lesson.id === id);
   const currentIndex = lessons.findIndex(lesson => lesson.id === id);
   const lesson = lessons[currentIndex];
-  const [completedLessons, setCompletedLessons] = useState(() => {
-    return JSON.parse(localStorage.getItem('completedLessons')) || [];
-  });
-  const isCompleted = completedLessons.includes(id);
 
   const totalLessons = lessons.length;
-
   const progress = ((currentIndex + 1) / totalLessons) * 100;
 
   const prevLesson = lessons[currentIndex - 1];
   const nextLesson = lessons[currentIndex + 1];
 
+  const [completedLessons, setCompletedLessons] = useState(() => {
+    return JSON.parse(localStorage.getItem('completedLessons')) || [];
+  });
+
+  const isCompleted = completedLessons.includes(id);
+
   const markCompleted = () => {
     if (isCompleted) return;
 
-    const updated = [...completedLessons, id];
+    const updatedLessons = [...completedLessons, id];
 
-    setCompletedLessons(updated);
-
-    localStorage.setItem('completedLessons', JSON.stringify(updated));
+    setCompletedLessons(updatedLessons);
+    localStorage.setItem('completedLessons', JSON.stringify(updatedLessons));
   };
 
   if (!lesson) return <div>Lesson not found</div>;
 
   return (
     <div className={css.lesson}>
-      <h1>{lesson.title}</h1>
       <Link to="/lessons" className={css.navBtn}>
-        {' '}
-        ⬅️ Back to lessons
+        ⬅ Back to lessons
       </Link>
+
+      <h1>{lesson.title}</h1>
+
       <p>
         Lesson {currentIndex + 1} of {totalLessons}
       </p>
-      <div className={css.progressBar}>
-        <div className={css.progress} style={{ width: `${progress}%` }}></div>
-      </div>
-      {lesson.content.map((p, index) => (
-        <p key={index}>{p}</p>
+
+      <ProgressBar progress={progress} />
+
+      {lesson.content.map((paragraph, index) => (
+        <p key={index}>{paragraph}</p>
       ))}
+
       <p className={css.task}>
         <strong>Task:</strong> {lesson.task}
       </p>
@@ -65,13 +67,13 @@ const LessonPage = () => {
       <div className={css.navigation}>
         {prevLesson && (
           <Link to={`/lesson/${prevLesson.id}`} className={css.navBtn}>
-            ⬅️ Previous
+            ⬅ Previous
           </Link>
         )}
 
         {nextLesson && (
           <Link to={`/lesson/${nextLesson.id}`} className={css.navBtn}>
-            Next ➡️
+            Next ➡
           </Link>
         )}
       </div>

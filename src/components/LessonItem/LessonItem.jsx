@@ -1,9 +1,21 @@
-import css from "./LessonItem.module.css"
+import { Link } from 'react-router-dom';
+import css from './LessonItem.module.css';
 
-const LessonItem = () => {
+const LessonItem = ({ lesson, index, isCompleted }) => {
   return (
-    <div>LessonItem</div>
-  )
-}
+    <Link to={`/lesson/${lesson.id}`} className={css.card}>
+      <div className={css.titleWrapp}>
+        <h3>
+          {index + 1}. {lesson.title}
+          {isCompleted && ' ✔'}
+        </h3>
+      </div>
+      
+      <h6>{lesson.description}</h6>
 
-export default LessonItem
+      <span className={css.openButton}>Open lesson</span>
+    </Link>
+  );
+};
+
+export default LessonItem;
