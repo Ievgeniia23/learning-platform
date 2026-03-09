@@ -6,6 +6,10 @@ import Layout from './components/Layout/Layout.jsx';
 import Home from './pages/Home/Home.jsx';
 import LessonPage from './pages/LessonPage/LessonPage.jsx';
 
+
+import NewCounter from './components/Task/Task.jsx';
+
+
 import './App.css';
 import AllLessonsPage from './pages/AllLessonsPage/AllLessonsPage.jsx';
 
@@ -13,6 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <Layout>
+             <NewCounter />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lessons" element={<AllLessonsPage />} />

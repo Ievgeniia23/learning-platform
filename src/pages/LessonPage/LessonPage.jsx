@@ -1,8 +1,10 @@
 import { useParams, Link } from 'react-router-dom';
-import { useState } from 'react';
 
 import ProgressBar from '../../components/ProgressBar/ProgressBar.jsx';
-import { lessons } from '../../data/lessons';
+import CompleteButton from '../../components/CompleteButton/CompleteButton.jsx';
+import Navigation from '../../components/Navigation/Navigation.jsx';
+
+import { lessons } from '../../data/lessons.js';
 import css from './LessonPage.module.css';
 
 const LessonPage = () => {
@@ -11,28 +13,13 @@ const LessonPage = () => {
   const currentIndex = lessons.findIndex(lesson => lesson.id === id);
   const lesson = lessons[currentIndex];
 
+  if (!lesson) return <div>Lesson not found</div>;
+
   const totalLessons = lessons.length;
   const progress = ((currentIndex + 1) / totalLessons) * 100;
 
   const prevLesson = lessons[currentIndex - 1];
   const nextLesson = lessons[currentIndex + 1];
-
-  const [completedLessons, setCompletedLessons] = useState(() => {
-    return JSON.parse(localStorage.getItem('completedLessons')) || [];
-  });
-
-  const isCompleted = completedLessons.includes(id);
-
-  const markCompleted = () => {
-    if (isCompleted) return;
-
-    const updatedLessons = [...completedLessons, id];
-
-    setCompletedLessons(updatedLessons);
-    localStorage.setItem('completedLessons', JSON.stringify(updatedLessons));
-  };
-
-  if (!lesson) return <div>Lesson not found</div>;
 
   return (
     <div className={css.lesson}>
@@ -56,27 +43,11 @@ const LessonPage = () => {
         <strong>Task:</strong> {lesson.task}
       </p>
 
-      <button
-        onClick={markCompleted}
-        disabled={isCompleted}
-        className={css.completeBtn}
-      >
-        {isCompleted ? '✔ Completed' : 'Mark as completed'}
-      </button>
+      {/* Кнопка для отметки / снятия отметки пройденного урока */}
+      <CompleteButton lessonId={id} />
 
-      <div className={css.navigation}>
-        {prevLesson && (
-          <Link to={`/lesson/${prevLesson.id}`} className={css.navBtn}>
-            ⬅ Previous
-          </Link>
-        )}
-
-        {nextLesson && (
-          <Link to={`/lesson/${nextLesson.id}`} className={css.navBtn}>
-            Next ➡
-          </Link>
-        )}
-      </div>
+      {/* Навигация по урокам */}
+      <Navigation prevLesson={prevLesson} nextLesson={nextLesson} />
     </div>
   );
 };
