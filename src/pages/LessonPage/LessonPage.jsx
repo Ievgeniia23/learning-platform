@@ -1,4 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
+import { useEffect } from 'react';
+
 
 import ProgressBar from '../../components/ProgressBar/ProgressBar.jsx';
 import CompleteButton from '../../components/CompleteButton/CompleteButton.jsx';
@@ -12,6 +14,14 @@ const LessonPage = () => {
 
   const currentIndex = lessons.findIndex(lesson => lesson.id === id);
   const lesson = lessons[currentIndex];
+
+useEffect(() => {
+  const saved = Number(localStorage.getItem('lastVisitedLesson')) || 0;
+  const newValue = Math.max(saved, currentIndex + 1);
+
+  localStorage.setItem('lastVisitedLesson', newValue);
+}, [currentIndex]);
+
 
   if (!lesson) return <div>Lesson not found</div>;
 
@@ -43,10 +53,10 @@ const LessonPage = () => {
         <strong>Task:</strong> {lesson.task}
       </p>
 
-      {/* Кнопка для отметки / снятия отметки пройденного урока */}
+      
       <CompleteButton lessonId={id} />
 
-      {/* Навигация по урокам */}
+     
       <Navigation prevLesson={prevLesson} nextLesson={nextLesson} />
     </div>
   );

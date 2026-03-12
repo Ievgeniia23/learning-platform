@@ -12,10 +12,10 @@ const CompleteButton = ({ lessonId }) => {
     let updatedLessons;
 
     if (isCompleted) {
-      // снимаем отметку
+      
       updatedLessons = completedLessons.filter(id => id !== lessonId);
     } else {
-      // добавляем отметку
+     
       updatedLessons = [...completedLessons, lessonId];
     }
 
