@@ -24,6 +24,15 @@ const LessonsList = () => {
     <div className={css.list}>
       <h1>JavaScript Lessons</h1>
 
+      <p className={css.totalProgress}>
+        You have completed {completedLessons.length} of {lessons.length} lessons
+      </p>
+
+
+
+
+      
+
       {lessons.map((lesson, index) => (
         <LessonItem
           key={lesson.id}
