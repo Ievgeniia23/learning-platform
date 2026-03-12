@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
-
 import ProgressBar from '../../components/ProgressBar/ProgressBar.jsx';
 import CompleteButton from '../../components/CompleteButton/CompleteButton.jsx';
 import Navigation from '../../components/Navigation/Navigation.jsx';
@@ -11,19 +10,20 @@ import css from './LessonPage.module.css';
 
 const LessonPage = () => {
   const { id } = useParams();
-
   const currentIndex = lessons.findIndex(lesson => lesson.id === id);
   const lesson = lessons[currentIndex];
 
-useEffect(() => {
-  const saved = Number(localStorage.getItem('lastVisitedLesson')) || 0;
-  const newValue = Math.max(saved, currentIndex + 1);
-
-  localStorage.setItem('lastVisitedLesson', newValue);
-}, [currentIndex]);
-
-
+  // Если урок не найден
   if (!lesson) return <div>Lesson not found</div>;
+
+  // Сохраняем просмотренный урок в localStorage
+  useEffect(() => {
+    const viewed = JSON.parse(localStorage.getItem('viewedLessons')) || [];
+    if (!viewed.includes(lesson.id)) {
+      viewed.push(lesson.id);
+      localStorage.setItem('viewedLessons', JSON.stringify(viewed));
+    }
+  }, [lesson.id]);
 
   const totalLessons = lessons.length;
   const progress = ((currentIndex + 1) / totalLessons) * 100;
@@ -38,7 +38,6 @@ useEffect(() => {
       </Link>
 
       <h1>{lesson.title}</h1>
-
       <p>
         Lesson {currentIndex + 1} of {totalLessons}
       </p>
@@ -53,10 +52,8 @@ useEffect(() => {
         <strong>Task:</strong> {lesson.task}
       </p>
 
-      
       <CompleteButton lessonId={id} />
 
-     
       <Navigation prevLesson={prevLesson} nextLesson={nextLesson} />
     </div>
   );
