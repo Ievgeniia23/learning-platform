@@ -29,9 +29,6 @@ const Home = () => {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
-
-
-  
   
 
   const visitedProgress = (viewedLessons.length / lessons.length) * 100;
@@ -90,7 +87,7 @@ const lastViewedLessonTitle = lastViewedLesson.title;
         </div>
       </div>
 
-      {/* Preview lessons */}
+  
       <h2>Preview Lessons</h2>
       <div className={css.preview}>
         {preview.map(lesson => (

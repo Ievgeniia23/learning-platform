@@ -8,6 +8,8 @@ const LessonsList = () => {
     return JSON.parse(localStorage.getItem('completedLessons')) || [];
   });
 
+  const [filter, setFilter] = useState('all');
+
   useEffect(() => {
     const handleStorageChange = () => {
       setCompletedLessons(
@@ -20,6 +22,12 @@ const LessonsList = () => {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
+  const filteredLessons = lessons.filter(lesson => {
+    if (filter === 'completed') return completedLessons.includes(lesson.id);
+    if (filter === 'notCompleted') return !completedLessons.includes(lesson.id);
+    return true;
+  });
+
   return (
     <div className={css.list}>
       <h1>JavaScript Lessons</h1>
@@ -28,12 +36,13 @@ const LessonsList = () => {
         You have completed {completedLessons.length} of {lessons.length} lessons
       </p>
 
+      <div className={css.filters}>
+        <button className={css.filterBtn} onClick={() => setFilter('all')}>All ({lessons.length}) </button>
+        <button className={css.filterBtn} onClick={() => setFilter('completed')}>Completed ({completedLessons.length}) </button>
+        <button className={css.filterBtn} onClick={() => setFilter('notCompleted')}>Not completed ({lessons.length - completedLessons.length}) </button>
+      </div>
 
-
-
-      
-
-      {lessons.map((lesson, index) => (
+      {filteredLessons.map((lesson, index) => (
         <LessonItem
           key={lesson.id}
           lesson={lesson}
