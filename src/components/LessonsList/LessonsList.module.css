@@ -5,24 +5,22 @@
   margin: 0 auto;
 }
 
-
-
-
-.cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.filterBtn {
+margin-right: 20px;
+padding: 4px 6px;
+font-family: inherit;
+color: rgb(77, 79, 182);
+background-color: blanchedalmond;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+ box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
+ .filterBtn:hover {
+  background-color: rgb(77, 79, 182); 
+  color:blanchedalmond;
+ box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+ }
 
-.check {
-  background: #4caf50;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+

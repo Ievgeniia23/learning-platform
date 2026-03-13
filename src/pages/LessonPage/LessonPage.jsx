@@ -13,11 +13,9 @@ const LessonPage = () => {
   const currentIndex = lessons.findIndex(lesson => lesson.id === id);
   const lesson = lessons[currentIndex];
 
-  // Если урок не найден
   if (!lesson) return <div>Lesson not found</div>;
 
-  // Сохраняем просмотренный урок в localStorage
-  useEffect(() => {
+   useEffect(() => {
     const viewed = JSON.parse(localStorage.getItem('viewedLessons')) || [];
     if (!viewed.includes(lesson.id)) {
       viewed.push(lesson.id);
