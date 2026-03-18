@@ -16,7 +16,6 @@ const Home = () => {
     return JSON.parse(localStorage.getItem('viewedLessons')) || [];
   });
 
-  
   useEffect(() => {
     const handleStorageChange = () => {
       setCompletedLessons(
@@ -29,24 +28,37 @@ const Home = () => {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
-  
+
+  // if a lesson is completed, it must be considered viewed
+  useEffect(() => {
+    const completed =
+      JSON.parse(localStorage.getItem('completedLessons')) || [];
+
+    const viewed = JSON.parse(localStorage.getItem('viewedLessons')) || [];
+
+    const merged = [...new Set([...viewed, ...completed])];
+
+    if (merged.length !== viewed.length) {
+      localStorage.setItem('viewedLessons', JSON.stringify(merged));
+      setViewedLessons(merged);
+    }
+  }, []);
 
   const visitedProgress = (viewedLessons.length / lessons.length) * 100;
   const completedProgress = (completedLessons.length / lessons.length) * 100;
 
-const lastViewedLesson =
-  lessons.find(l => l.id === viewedLessons[viewedLessons.length - 1]) ||
-  lessons[0];
+  const lastViewedLesson =
+    lessons.find(l => l.id === viewedLessons[viewedLessons.length - 1]) ||
+    lessons[0];
 
-const lastViewedLessonId = lastViewedLesson.id;
-const lastViewedLessonTitle = lastViewedLesson.title;
+  const lastViewedLessonId = lastViewedLesson.id;
+  const lastViewedLessonTitle = lastViewedLesson.title;
 
   return (
     <div className={css.homeWrap}>
       <h1>Welcome to JS Mini Course</h1>
       <p>Learn JavaScript step by step!</p>
 
-     
       {/* {viewedLessons.length > 0 && (
         <div className={css.continueCard}>
           <Link
@@ -58,7 +70,6 @@ const lastViewedLessonTitle = lastViewedLesson.title;
         </div>
       )} */}
 
-    
       <div className={css.progressSection}>
         <h2>Your progress</h2>
 
@@ -87,7 +98,6 @@ const lastViewedLessonTitle = lastViewedLesson.title;
         </div>
       </div>
 
-  
       <h2>Preview Lessons</h2>
       <div className={css.preview}>
         {preview.map(lesson => (

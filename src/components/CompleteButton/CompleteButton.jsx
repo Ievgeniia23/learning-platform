@@ -11,12 +11,19 @@ const CompleteButton = ({ lessonId }) => {
   const toggleCompleted = () => {
     let updatedLessons;
 
+   const viewedLessons = JSON.parse(localStorage.getItem('viewedLessons')) || []; 
+
     if (isCompleted) {
       
       updatedLessons = completedLessons.filter(id => id !== lessonId);
     } else {
      
       updatedLessons = [...completedLessons, lessonId];
+
+      if (!viewedLessons.includes(lessonId)) {
+        viewedLessons.push(lessonId);
+        localStorage.setItem("viewedLessons", JSON.stringify(viewedLessons));
+}
     }
 
     setCompletedLessons(updatedLessons);
