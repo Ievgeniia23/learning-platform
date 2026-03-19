@@ -9,12 +9,13 @@ import LessonPage from './pages/LessonPage/LessonPage.jsx';
 
 import './App.css';
 import AllLessonsPage from './pages/AllLessonsPage/AllLessonsPage.jsx';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx';
 
 function App() {
   return (
     <BrowserRouter>
       <Layout>
-           
+           <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lessons" element={<AllLessonsPage />} />
