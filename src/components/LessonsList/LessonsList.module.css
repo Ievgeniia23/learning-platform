@@ -6,21 +6,22 @@
 }
 
 .filterBtn {
-margin-right: 20px;
-padding: 4px 6px;
-font-family: inherit;
-color: rgb(77, 79, 182);
-background-color: blanchedalmond;
-border: none;
-border-radius: 6px;
-cursor: pointer;
- box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  margin-right: 20px;
+  padding: 4px 6px;
+  font-family: inherit;
+  color: var(--accent-color);
+  background-color: var(--background-primary-light-color);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    box-shadow 0.2s;
 }
- .filterBtn:hover {
-  background-color: rgb(77, 79, 182); 
-  color:blanchedalmond;
- box-shadow: 0 8px 16px rgba(0,0,0,0.2);
- }
-
-
+.filterBtn:hover {
+  background-color: var(--accent-color);
+  color: var(--filters-color);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

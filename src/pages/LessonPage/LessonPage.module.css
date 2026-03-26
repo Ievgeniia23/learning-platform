@@ -1,23 +1,40 @@
 .lesson {
   margin-top: 30px;
-  background: #f5f0e6;
+  background: var(--background-primary-light-color);
   padding: 30px;
   border-radius: 12px;
 }
 
-.lesson h1 {
-  margin-top: 0;
+.lesson h2 {
+  margin-top: 20px;
 }
 
 .task {
   margin-top: 20px;
   padding: 15px;
-
-  background: #fff;
-  border-left: 4px solid #cdb492;
+  background: var(--accent-secondary-color);
+  border-left: 4px solid var(--filters-color);
 
   font-weight: 500;
 }
+.navBtn {
+  text-decoration: none;
+  color: var(--base-black-color);
+  padding: 8px 16px;
+  background-color: var(--background-secondary-color);
+  border-radius: 6px;
+  font-weight: 500;
+  margin: 10px 5px;
+  transition: background-color 0.2s;
+  font-size: 16px;
+  border: none;
+  margin-bottom: 40px;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
 
+}
 
-
+.navBtn:hover {
+  background-color: var(--accent-secondary-color);
+  color: var(--accent-color);
+}

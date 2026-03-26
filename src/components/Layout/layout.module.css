@@ -1,5 +1,5 @@
 .layoutContainer {
-  background-color: rgb(205, 180, 146);
+  background-color: var(--background-primary-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;

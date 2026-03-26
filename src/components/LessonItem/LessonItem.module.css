@@ -1,10 +1,10 @@
 .card {
   display: block;
   padding: 20px;
-  background: #f5f0e6;
+  background:var(--background-secondary-color);
   border-radius: 12px;
   text-decoration: none;
-  color: #333;
+  color:var(--base-black-color);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -18,14 +18,14 @@
   margin: 0 0 6px 0;
   font-weight: 600;
   font-size: 18px;
-  color: #333;
+  color:var(--base-black-color);
 }
 
 .card h6 {
   margin: 0 0 12px 0;
   font-weight: 400;
   font-size: 14px;
-  color: #555;
+  color:var(--base-grey-color);
 }
 
 .titleWrapp {
@@ -38,8 +38,8 @@
 .openButton {
   display: inline-block;
   padding: 4px 10px;
-  background-color: #646cff;
-  color: #fff;
+  background-color:var(--accent-color);
+  color:var(--background-primary-light-color);
   border-radius: 6px;
   font-size: 12px;
   font-weight: 500;
@@ -47,5 +47,5 @@
 }
 
 .openButton:hover {
-  background-color: #535bf2;
+  background-color:var(--accent-hover-color);
 }

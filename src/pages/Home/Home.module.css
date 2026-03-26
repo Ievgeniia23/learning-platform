@@ -11,7 +11,7 @@
 
 .progressCard {
   padding: 18px 20px;
-  background: white;
+  background:var(--background-primary-light-color);
   border-radius: 14px;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.06);
@@ -24,7 +24,7 @@
 
 .progressLabel {
   font-size: 14px;
-  color: #6b7280;
+  color:var(--base-grey-color);
   margin-bottom: 0px;
 }
 
@@ -42,14 +42,14 @@
 }
 
 p {
-  font-size: 18px;
-  color: #555;
+  font-size: 14px;
+  color:var(--base-grey-color);
   margin-top: 0;
   margin-bottom: 5px;
 }
 
 h3 {
-  margin: 5px;
+  margin: 0px;
 }
 .preview {
   display: flex;
@@ -59,8 +59,8 @@ h3 {
   flex-wrap: wrap;
 }
 .card {
-  background: #f5f0e6;
-  padding: 20px;
+  background-color:var(--background-primary-light-color);
+  padding: 10px;
   border-radius: 12px;
   width: 220px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -74,8 +74,8 @@ h3 {
 .button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #646cff;
-  color: #fff;
+  background-color: var(--accent-color);
+  color:var(--background-primary-light-color);
   font-weight: 500;
   border-radius: 8px;
   text-decoration: none;
@@ -83,6 +83,6 @@ h3 {
 }
 
 .button:hover {
-  background-color: #535bf2;
-  color: #555;
+  background-color: var(--accent-hover-color);
+  color:var(--base-grey-color);
 }
