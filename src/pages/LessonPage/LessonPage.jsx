@@ -35,7 +35,7 @@ const LessonPage = () => {
         ⬅ Back to lessons
       </Link>
 
-      <h1>{lesson.title}</h1>
+      <h2>{lesson.title}</h2>
       <p>
         Lesson {currentIndex + 1} of {totalLessons}
       </p>
